@@ -27,18 +27,36 @@ namespace OmarApp
                 + "Email : " + loginSession.Result.GetUser().Result.Email + "\n"
                 + "Username : " + loginSession.Result.GetUser().Result.Username + "\n");
 
-            Task<JsonList<ArtistModel>> artistsResults = openTidlClient.SearchArtists("Nancy Ajram", 0, 9999);
+            Task<JsonList<ArtistModel>> artistsResults = openTidlClient.SearchArtists("Nancy Ajram", 0, 4);
             
             foreach (var artistModel in artistsResults.Result.Items)
             {
                 Console.WriteLine("The Artist Model ID : " + artistModel.Id);
                 Console.WriteLine("The Artist Model Name : " + artistModel.Name);
                 Console.WriteLine("The Artist Model URL : " + artistModel.Url + "\n");
+
+                Task<JsonList<AlbumModel>> artistAlbumsObject = openTidlClient.GetArtistAlbums(artistModel.Id,
+                                                                              OpenTidl.Enums.AlbumFilter.ALBUMS,0,200);
+                Console.WriteLine("Albums for " + artistModel.Name);
+                foreach (var albumModelObject in artistAlbumsObject.Result.Items)
+                {
+                    Console.WriteLine("\t Album Name : " + albumModelObject.Title);
+                    Console.WriteLine("\t Album Artist Name : " + albumModelObject.Artist.Name);
+                    Console.WriteLine("\t Album Duration : " + albumModelObject.Duration);
+                    Console.WriteLine("\t Album ID : " + albumModelObject.Id);
+                    Console.WriteLine("\t Album Number of Tracks : " + albumModelObject.NumberOfTracks);
+                    Console.WriteLine("\t Album Number of Volumes : " + albumModelObject.NumberOfVolumes);
+                    Console.WriteLine("\t Album Release Date : " + albumModelObject.ReleaseDate);
+                    Console.WriteLine("\t Album URL : " + albumModelObject.Url + "\n");
+                }
             }
 
-            Console.WriteLine("Log Out this user : " + loginSession.Result.GetUser().Result.Username);
+            String userName = loginSession.Result.GetUser().Result.Username;
+            Console.WriteLine("Log Out this user : " + userName);
             Task<EmptyModel> logoutResult = loginSession.Result.Logout();
+            Console.WriteLine("Wait until this user : " + userName + " Logged Out!");
             logoutResult.Wait();
+            Console.WriteLine("The user : " + userName + " Logged Out Successfully!");
             Console.ReadLine();
         }
     }
