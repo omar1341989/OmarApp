@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmarApp", "OmarApp\OmarApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTidl", "..\jackfagner\OpenTidl\OpenTidl\OpenTidl.csproj", "{3796564B-3A91-4AEE-B859-E7E6BCF1521D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmarAppTests", "OmarAppTests\OmarAppTests.csproj", "{E106BDC7-DF39-4EB0-91D3-73BA067BFD2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3796564B-3A91-4AEE-B859-E7E6BCF1521D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3796564B-3A91-4AEE-B859-E7E6BCF1521D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3796564B-3A91-4AEE-B859-E7E6BCF1521D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E106BDC7-DF39-4EB0-91D3-73BA067BFD2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E106BDC7-DF39-4EB0-91D3-73BA067BFD2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E106BDC7-DF39-4EB0-91D3-73BA067BFD2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E106BDC7-DF39-4EB0-91D3-73BA067BFD2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
