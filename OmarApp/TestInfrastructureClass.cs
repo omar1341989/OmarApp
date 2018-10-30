@@ -12,14 +12,13 @@ namespace OmarApp
     public class TestInfrastructureClass
     {
 
-        public OpenTidl.OpenTidlClient loginUsertoTidalStreamingService(String username, String password)
+        public  OpenTidlSession loginUsertoTidalStreamingService(OpenTidl.OpenTidlClient openTidlClient,
+            String username, String password)
         {
-            OpenTidl.OpenTidlClient openTidlClient = null;
+            Task<OpenTidlSession> loginSession = null;
             try
             {
-                OpenTidl.ClientConfiguration clientConfiguration = OpenTidl.ClientConfiguration.Default;
-                openTidlClient = new OpenTidl.OpenTidlClient(clientConfiguration);
-                Task<OpenTidlSession> loginSession = openTidlClient.LoginWithUsername(username, password);
+                loginSession = openTidlClient.LoginWithUsername(username, password);
                 Console.WriteLine("Waiting Until the Login Complete...");
                 loginSession.Wait();
                 Console.WriteLine("The Login Process had been ended succesfully with this User Info : \n"
@@ -34,7 +33,7 @@ namespace OmarApp
             {
                 Console.WriteLine(ex.Message + ex.StackTrace);
             }
-            return openTidlClient;
+            return loginSession.Result;
         }
 
         public ArtistModel[] getAllArtists(OpenTidl.OpenTidlClient client, String artistName)
