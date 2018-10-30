@@ -14,14 +14,17 @@ namespace OmarApp.Tests
     public class TestInfrastructureClassTests
     {
         OmarApp.TestInfrastructureClass testInfrastructureClass = new TestInfrastructureClass();
+        OpenTidl.OpenTidlClient openTidlClient;
         [TestMethod()]
         public void loginUsertoTidalStreamingServiceTest()
         {
             OpenTidl.ClientConfiguration clientConfiguration = OpenTidl.ClientConfiguration.Default;
-            OpenTidl.OpenTidlClient openTidlClient = new OpenTidl.OpenTidlClient(clientConfiguration);
+            openTidlClient = new OpenTidl.OpenTidlClient(clientConfiguration);
             String username = "omar13489@gmail.com";
             String password = "Zubur123!";
+
             OpenTidlSession loginSessionResult = testInfrastructureClass.loginUsertoTidalStreamingService(openTidlClient, username, password);
+
             String FirstName = loginSessionResult.GetUser().Result.FirstName;
             FirstName.Should().Equals("Omar");
             String LastName = loginSessionResult.GetUser().Result.LastName;
