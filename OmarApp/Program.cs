@@ -27,7 +27,7 @@ namespace OmarApp
                 + "Email : " + loginSession.Result.GetUser().Result.Email + "\n"
                 + "Username : " + loginSession.Result.GetUser().Result.Username + "\n");
 
-            Task<JsonList<ArtistModel>> artistsResults = openTidlClient.SearchArtists("Selena Gomez", 0, 1);
+            Task<JsonList<ArtistModel>> artistsResults = openTidlClient.SearchArtists("Nancy Ajram", 0, 100);
 
             Console.WriteLine("Wait until all the artists had been fetched correctly!");
             artistsResults.Wait();
@@ -49,6 +49,7 @@ namespace OmarApp
                 {
                     Console.WriteLine("\t Album Name : " + albumModelObject.Title);
                     Console.WriteLine("\t Album Artist Name : " + albumModelObject.Artist.Name);
+                    Console.WriteLine("\t Album Artist ID : " + albumModelObject.Artist.Id);
                     Console.WriteLine("\t Album Duration : " + albumModelObject.Duration);
                     Console.WriteLine("\t Album ID : " + albumModelObject.Id);
                     Console.WriteLine("\t Album Number of Tracks : " + albumModelObject.NumberOfTracks);

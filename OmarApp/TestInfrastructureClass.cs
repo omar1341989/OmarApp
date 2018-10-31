@@ -60,7 +60,7 @@ namespace OmarApp
             {
                 artistAlbumsObject =
                 client.GetArtistAlbums(artistModel.Id,
-                                               OpenTidl.Enums.AlbumFilter.ALBUMS, 0, 200);
+                                       OpenTidl.Enums.AlbumFilter.ALBUMS, 0, 200);
                 Console.WriteLine("Wait until all the albums for the specific artist had been fetched correctly!");
                 artistAlbumsObject.Wait();
             }
