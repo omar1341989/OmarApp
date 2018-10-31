@@ -58,8 +58,7 @@ namespace OmarApp
             Task<JsonList<AlbumModel>> artistAlbumsObject = null;
             try
             {
-                artistAlbumsObject =
-                client.GetArtistAlbums(artistModel.Id,
+                artistAlbumsObject = client.GetArtistAlbums(artistModel.Id,
                                        OpenTidl.Enums.AlbumFilter.ALBUMS, 0, 200);
                 Console.WriteLine("Wait until all the albums for the specific artist had been fetched correctly!");
                 artistAlbumsObject.Wait();

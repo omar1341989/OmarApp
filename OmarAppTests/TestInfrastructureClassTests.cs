@@ -107,7 +107,8 @@ namespace OmarApp.Tests
                         Console.WriteLine("\t Album URL : " + albumModelObject.Url + "\n");
                     }
                 }
-                
+
+
             }
 
             nancyAlbumsActual.Should().BeEquivalentTo(nancyAlbumsExpected);
